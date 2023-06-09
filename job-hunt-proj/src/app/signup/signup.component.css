@@ -1,0 +1,30 @@
+.card{
+   
+    border:none;
+    width:50vw;
+    
+    padding:30px;
+    position:absolute;
+    top:58%;
+    left:65%;
+    transform:translate(-80%,-10%);
+    background:hsla(205,46%,30%,1);
+    background:linear-gradient(90deg,rgb(51, 125, 177)0%,rgb(14, 138, 180)100%);
+}
+.card  h1,h6{
+    color:#fff;
+}
+label{
+    color:#fff;
+}
+body{
+    background-color:green;
+}
+.image{
+    height:22.5em; background-size:cover; width:auto;
+    background-image:url('/assets/images/job3.jpg');
+    /*background-position:50% 50%;*/
+  }
+
+
+  

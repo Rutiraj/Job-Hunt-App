@@ -1,0 +1,41 @@
+<app-navbar2></app-navbar2>
+<div class="image">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1>Login</h1>
+                    <h6>Please enter email and password</h6>
+                </div>
+                    <form #LoginForm="ngForm" (ngSubmit)="login(LoginForm)">
+                      <small class="text-danger">{{disp_msg}}</small>
+                        
+                          <div class="mb-3" >
+                            <label for="exampleInputFullName" class="form-label">User Name</label>
+                            <input type="text" class="form-control" id="exampleInputFullName" name="fullname"
+                            required [(ngModel)]="user.userName" #username="ngModel"
+                            [class.is-invalid]="username.invalid && (username.dirty || username.touched)"
+                            [class.is-valid]="username.valid && (username.dirty || username.touched)">
+                            <span class="invalid-feedback"
+                            *ngIf="(username.touched || username.dirty) && username.errors?.['required']">
+                          Username is mandatory</span>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1" name="pass"
+                          required [(ngModel)]="user.password" #pwd="ngModel"
+                          [class.is-invalid]="pwd.invalid && (pwd.dirty || pwd.touched)"
+                          [class.is-valid]="pwd.valid && (pwd.dirty || pwd.touched)">
+                          <span class="invalid-feedback"
+                            *ngIf="(pwd.touched || pwd.dirty) && pwd.errors?.['required']">
+                              Password is mandatory</span>
+                        </div>
+                        <button type="submit" [class.disabled]="LoginForm.invalid"  class="btn btn-primary">Login</button>
+                      </form>
+                <a style="color:#fff;margin-top:10px;text-decoration:none" routerLink="/signup">New User? Click to signup!!</a>
+                
+            </div>
+        </div>
+    </div>
+  </div>
+    

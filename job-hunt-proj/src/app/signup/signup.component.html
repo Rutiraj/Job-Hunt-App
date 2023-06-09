@@ -1,0 +1,96 @@
+<app-navbar2></app-navbar2>
+<div class="image">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+          
+            <div class="card">
+                <div class="text-center">
+                    <h1>Signup</h1>
+                    <h6>Please enter your details</h6>
+                </div>
+                <form>
+                    <form #SignupForm="ngForm">
+                      <small class="text-danger">{{disp_msg}}</small>
+                        <div class="mb-3" >
+                            <label for="exampleInputFullName" class="form-label">User Name</label>
+                            <input type="text" class="form-control" id="exampleInputFullName" name="fullname"
+                            required minlength="3" [(ngModel)]="user.userName" #username="ngModel"
+                            [class.is-invalid]="username.invalid && (username.dirty || username.touched)"
+                            [class.is-valid]="username.valid && (username.dirty || username.touched)">
+                            <span class="invalid-feedback"
+                            *ngIf="(username.touched || username.dirty) && username.errors?.['required']">
+                          Username is mandatory</span>
+                          <span class="invalid-feedback"
+                            *ngIf="(username.touched || username.dirty) && username.errors?.['minlength']">
+                          Username should be atleast 3 characters</span>
+                          
+                          </div>
+                        
+                          
+                          
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Email address</label>
+                          <input required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email"
+                             [(ngModel)]="user.email" email="true" #mailid="ngModel"
+                            [class.is-invalid]="mailid.invalid && (mailid.dirty || mailid.touched)"
+                            [class.is-valid]="mailid.valid && (mailid.dirty || mailid.touched)">
+                            <span class="invalid-feedback"
+                            *ngIf="(mailid.touched || mailid.dirty) && mailid.errors?.['required']">
+                          Email is mandatory</span>
+                          <span class="invalid-feedback"
+                          *ngIf="(mailid.touched || mailid.dirty) && mailid.errors?.['email']">Email is not valid 
+                        </span>
+                          
+                        </div>
+
+                    
+
+
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1" name="pass"
+                          minlength="4" maxlength="10" required [(ngModel)]="user.password" #pwd="ngModel"
+                          [class.is-invalid]="pwd.invalid && (pwd.dirty || pwd.touched)"
+                          [class.is-valid]="pwd.valid && (pwd.dirty || pwd.touched)">
+                          <span class="invalid-feedback"
+                            *ngIf="(pwd.touched || pwd.dirty) && pwd.errors?.['required']">
+                              Password is mandatory</span>
+                          <span class="invalid-feedback"
+                                *ngIf="(pwd.touched || pwd.dirty) && pwd.errors?.['minlength']">
+                                Password should be atleast 4  characters</span>
+                        </div>
+
+
+                        
+
+
+                        <div class="mb-3">
+                          <label for="exampleInputQualification" class="form-label">Qualification</label>
+                          <input type="text" class="form-control" id="exampleInputQualification" name="qualification"
+                      
+                          required  [(ngModel)]="user.qualification" #qual="ngModel"
+                          [class.is-invalid]="qual.invalid && (qual.dirty || qual.touched)"
+                          [class.is-valid]="qual.valid && (qual.dirty || qual.touched)">
+                          <span class="invalid-feedback"
+                          *ngIf="(qual.touched || qual.dirty) && qual.errors?.['required']">
+                        Qualification is mandatory</span>
+                        </div>
+                        
+
+
+                        
+                       
+                        <button [class.disabled]="SignupForm.invalid"  type="submit" (click)="register()" class="btn btn-primary">Signup</button>
+                      </form>
+                      <a style="color:#fff;margin-top:10px;text-decoration: none;" routerLink="/login">Existing User? Click to login!!</a>
+                     
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+

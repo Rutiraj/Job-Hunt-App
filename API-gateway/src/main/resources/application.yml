@@ -1,0 +1,38 @@
+server:
+   port: 8080
+eureka:
+   client:
+      serviceURL:
+         defaultZone: http://localhost:8083/eureka   
+spring:
+   application:
+      name: gateway-service  
+   cloud:
+      gateway:
+        default-filters:
+          - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+        globalcors:
+          cors-configurations:
+            '[/**]':
+              allowedOrigins: "http://localhost:4200/"
+              allowedMethods: "*"
+              allowedHeaders: "*"
+        routes:
+          - id: wishService
+            uri: http://localhost:7777/
+            filters:
+              - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+            predicates:
+             - Path=/wishlist/**
+          - id: userservice
+            uri: http://localhost:8885/
+            filters:
+              - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+            predicates:
+             - Path=/auth/**
+          - id: jobServices
+            uri: http://localhost:8888/
+            filters:
+              - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+            predicates:
+             - Path=/jobs/**

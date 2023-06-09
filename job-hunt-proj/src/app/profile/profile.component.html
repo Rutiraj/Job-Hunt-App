@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<div class="row">
+  <div class="col-md-6">
+      <div class="card">
+          <div class="text-center">
+              <h1>Update Profile</h1>
+              
+          </div>
+  <!-- <div class="container mt-3"> -->
+    <form #UpdateForm="ngForm">
+      <small class="text-danger">{{disp_msg}}</small>
+
+      
+      
+
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">User Name</label>
+      <input type="text" minlength="3" name="username" class="form-control"  id="formGroupExampleInput"
+      [(ngModel)]="user.userName" #username="ngModel" readonly>
+    </div>
+    
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label">Email</label>
+      <input type="email" email="true" required name="email" class="form-control"  id="formGroupExampleInput2"
+      [(ngModel)]="user.email" #email="ngModel">
+    </div>
+    
+
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Qualification</label>
+        <input type="text" required name="qualification"  class="form-control" id="formGroupExampleInput2"
+        [(ngModel)]="user.qualification" #qual="ngModel">
+      </div>
+
+      
+
+      <button type="submit" class="btn btn-primary" (click)="updateProfile()">Update</button>
+
+    
+  </form>
+    </div>
+    </div>
+    </div>

@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<div class="container-fluid size">
+
+
+<!--<form class="d-flex mt-3 mb-10" role="search" >
+    <input class="form-control me-2" name="search" type="text" placeholder="Search by Category" aria-label="Search"
+    [(ngModel)]="search" #searchdata="ngModel" >
+    <button class="btn btn-outline-success" type="submit" (click)="searchByCategory(page)">🔍</button>
+  </form>-->
+  
+<form class="mt-3 mb-3" #homeForm="ngForm" >
+
+    <ng-multiselect-dropdown 
+   
+  [placeholder]="'Select By Category'"
+  [settings]="dropdownSettings"
+  [data]="dropdownList"
+  formControlName="category"
+  [(ngModel)]="selectedItems"
+  (onSelect)="onItemSelect($event)"
+  (onDeSelect)="onItemDeSelect($event)"
+  >
+
+  </ng-multiselect-dropdown>
+  <button class="btn btn-outline-secondary" type="submit" (click)="searchByCategory(page)">🔍</button>
+  </form>
+
+
+
+
+</div>
+<div class="container d-flex flex-row justify-content-between mt-3">
+  <button class="btn btn-dark " (click)="goprev()" [ngClass]="{'disabled':page==1}">previous</button>
+  <button class="btn btn-dark" (click)="getjobs(page)">Default</button>
+  <button class="btn btn-dark" (click)="goNext()" [ngClass]="{'disabled':isEndPage}">next</button>
+ 
+</div>
+<app-jobcard *ngFor="let i of jobs" [data]="i"></app-jobcard>
+
+
